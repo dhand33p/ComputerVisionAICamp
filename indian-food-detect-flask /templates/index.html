@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Image Classifier{% endblock %}
+
+{% block content %}
+<div id="container">
+  <h1>Food Detector</h1>
+  <p>This page allows you to upload an image of food that detects whether it is Indian or Mediterranean. This is part of AI Camp's summer project for Computer Vision incorporated by Dhandeep Suglani. </p>
+  <form enctype="multipart/form-data" method="post" action="/predict">
+    <label for="image-upload">Select an image of food to upload:</label>
+    <input type="file" id="image-upload" name="image" accept="image/*">
+    <input type="submit" value="Detect the Food!">
+  </form>
+  
+  <img id="selected-image" alt="selected image">
+</div>
+
+<script>
+  const inputElement = document.getElementById("image-upload");
+  const imageElement = document.getElementById("selected-image");
+
+  inputElement.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      imageElement.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+</script>
+{% endblock %}

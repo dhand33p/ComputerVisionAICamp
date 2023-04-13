@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Detection Result{% endblock %}
+
+{% block content %}
+<div class="result">
+  <h1>{{ result }}</h1>
+  <button onclick="window.location.href='{{ url_for('index') }}'">Try Different Picture!</button>
+</div>
+
+<footer>
+  <button style="color:black;" onclick="window.location.href='https://github.com/yourusername/yourproject'">View the project on Github by Dhandeep</button>
+</footer>
+{% endblock %}
